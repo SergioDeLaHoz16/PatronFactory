@@ -1,5 +1,5 @@
 import React from 'react';
-import { Student } from '../../domain/entities/Student';
+import { Student } from '../../domain/interfaces/IStudent';
 import { Edit, Trash2, User, Award } from 'lucide-react';
 
 interface StudentListProps {

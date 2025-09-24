@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Student } from '../../domain/entities/Student';
+import { Student } from '../../domain/interfaces/IStudent';
 import { IStudentCRUD } from '../../domain/interfaces/IStudentCRUD';
 import { StudentFactory, DataSourceType } from '../../infrastructure/factories/StudentFactory';
 import { StudentList } from '../components/StudentList';

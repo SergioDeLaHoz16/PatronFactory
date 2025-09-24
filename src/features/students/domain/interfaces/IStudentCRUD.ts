@@ -1,4 +1,4 @@
-import { Student } from '../entities/Student';
+import { Student } from './IStudent';
 
 /**
  * Interfaz IStudentCRUD - Define el contrato para las operaciones CRUD
@@ -9,7 +9,7 @@ import { Student } from '../entities/Student';
  * Métodos:
  * - create: Crea un nuevo estudiante.
  * - read: Obtiene un estudiante por su ID.
- * - readAll: Devuelve todos los estudiantes registrados. No soporta filtrado ni paginación.
+ * - readAll: Devuelve todos los estudiantes registrados. 
  * - update: Actualiza los datos de un estudiante existente.
  * - delete: Elimina un estudiante por su ID.
  */

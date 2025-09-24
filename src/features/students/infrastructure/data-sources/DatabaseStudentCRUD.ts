@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 import { IStudentCRUD } from '../../domain/interfaces/IStudentCRUD';
-import { Student } from '../../domain/entities/Student';
+import { Student } from '../../domain/interfaces/IStudent';
 import { StudentValidator } from '../../../../shared/utils/validations/validation';
 
 /**

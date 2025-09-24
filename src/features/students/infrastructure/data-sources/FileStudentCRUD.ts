@@ -1,8 +1,10 @@
 
 import { IStudentCRUD } from '../../domain/interfaces/IStudentCRUD';
-import { Student, StudentEntity } from '../../domain/entities/Student';
+import { Student } from '../../domain/interfaces/IStudent';
+import { StudentEntity } from '../../domain/entities/StudentEntity';
 import { StudentValidator } from '../../../../shared/utils/validations/validation';
 import studentsData from '../../../../data/students.json';
+
 // import { writeFile } from 'fs/promises';
 /**
  * FileStudentCRUD - Implementación concreta para manejo de datos desde archivo JSON
@@ -33,11 +35,6 @@ export class FileStudentCRUD implements IStudentCRUD {
   //     console.error(`Error al escribir el archivo: ${error}`);
   //   }
   // }
-  /**
-   * Simula la escritura al archivo JSON
-   * En un entorno real, esto escribiría al sistema de archivos
-   * En el navegador, mantenemos los datos en memoria
-   */
   private async saveToFile(): Promise<void> {
     try {
       // En un entorno de navegador, no podemos escribir archivos directamente

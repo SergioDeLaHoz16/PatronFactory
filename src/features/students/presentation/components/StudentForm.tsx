@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Student } from '../../domain/entities/Student';
+import { Student } from '../../domain/interfaces/IStudent';
 import { StudentValidator } from '../../../../shared/utils/validations/validation';
 import { Save, X } from 'lucide-react';
 
