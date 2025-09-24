@@ -200,14 +200,14 @@ export const StudentsPage: React.FC = () => {
 
             {dataSource === 'file' && (
               <>
-                <button
+                {/* <button
                   onClick={handleDownloadJSON}
                   className="bg-[#43a542] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#117a41] duration-700 transition-colors flex items-center gap-2"
                   title="Descargar JSON actualizado"
                 >
                   <Download size={20} />
                   Descargar JSON
-                </button>
+                </button> */}
               </>
             )}
 
