@@ -5,6 +5,13 @@ import { Student } from '../entities/Student';
  * Principios SOLID aplicados:
  * - Interface Segregation Principle (ISP): Interfaz específica para operaciones CRUD
  * - Dependency Inversion Principle (DIP): Las clases de alto nivel dependen de esta abstracción
+ *
+ * Métodos:
+ * - create: Crea un nuevo estudiante.
+ * - read: Obtiene un estudiante por su ID.
+ * - readAll: Devuelve todos los estudiantes registrados. No soporta filtrado ni paginación.
+ * - update: Actualiza los datos de un estudiante existente.
+ * - delete: Elimina un estudiante por su ID.
  */
 export interface IStudentCRUD {
   create(student: Omit<Student, 'id'>): Promise<Student>;

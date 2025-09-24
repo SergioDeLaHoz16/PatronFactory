@@ -7,10 +7,6 @@ import { DatabaseStudentCRUD } from '../data-sources/DatabaseStudentCRUD';
  * 
  * StudentFactory - Implementa el patrón Factory Method
  * 
- * ¿Qué es el patrón Factory?
- * Es un patrón de diseño creacional que proporciona una interfaz para crear objetos
- * sin especificar exactamente qué clase de objeto se creará.
- * 
  * ¿Por qué usarlo aquí?
  * - Permite crear diferentes implementaciones de IStudentCRUD sin que el código cliente
  *   conozca los detalles de construcción
@@ -32,7 +28,7 @@ export class StudentFactory {
    * @param sourceType - Tipo de fuente de datos ('file' o 'database')
    * @returns Implementación concreta de IStudentCRUD
    * 
-   * 🏭 PATRÓN FACTORY EN ACCIÓN:
+   * PATRÓN FACTORY EN ACCIÓN:
    * - El código cliente solo llama a createStudentCRUD('file' o 'database')
    * - No necesita conocer las clases FileStudentCRUD o DatabaseStudentCRUD
    * - Puede cambiar fácilmente entre fuentes de datos
@@ -74,13 +70,4 @@ export class StudentFactory {
  * 3. TESTABILIDAD: Fácil crear mocks para pruebas
  * 4. DESACOPLAMIENTO: El código cliente no depende de clases concretas
  * 5. CONFIGURABILIDAD: Se puede cambiar la fuente desde configuración
- * 
- * 📝 EJEMPLO DE USO:
- * 
- * // Cambiar entre fuentes es tan simple como cambiar un parámetro:
- * const fileService = StudentFactory.createStudentCRUD('file');
- * const dbService = StudentFactory.createStudentCRUD('database');
- * 
- * // El resto del código es idéntico para ambas fuentes:
- * const students = await fileService.readAll(); // O dbService.readAll()
  */
