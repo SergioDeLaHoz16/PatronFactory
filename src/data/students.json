@@ -4,7 +4,8 @@
     "nombre": "Juan Pérez",
     "parcial1": 4.5,
     "parcial2": 3.8,
-    "promedio": 4.15,
+    "parcial3": 4.7,
+    "promedio": 4.33,
     "createdAt": "2024-01-15T10:00:00.000Z",
     "updatedAt": "2024-01-15T10:00:00.000Z"
   },
@@ -13,7 +14,8 @@
     "nombre": "María González",
     "parcial1": 4.2,
     "parcial2": 4.7,
-    "promedio": 4.45,
+    "parcial3": 4.7,
+    "promedio": 4.53,
     "createdAt": "2024-01-16T10:00:00.000Z",
     "updatedAt": "2024-01-16T10:00:00.000Z"
   },
@@ -22,7 +24,9 @@
     "nombre": "Carlos Rodríguez",
     "parcial1": 3.5,
     "parcial2": 4.0,
-    "promedio": 3.75,
+    "parcial3": 4.7,
+    "promedio": 4.07,
+  
     "createdAt": "2024-01-17T10:00:00.000Z",
     "updatedAt": "2024-01-17T10:00:00.000Z"
   }

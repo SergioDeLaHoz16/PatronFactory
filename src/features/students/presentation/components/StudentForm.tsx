@@ -17,7 +17,8 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
   const [formData, setFormData] = useState({
     nombre: student?.nombre || '',
     parcial1: student?.parcial1 || 0,
-    parcial2: student?.parcial2 || 0
+    parcial2: student?.parcial2 || 0,
+    parcial3: student?.parcial3 || 0
   });
   const [errors, setErrors] = useState<string[]>([]);
 
@@ -106,15 +107,34 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
                 required
               />
             </div>
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Parcial 3 (0.0 - 5.0)
+              </label>
+              <input
+                type="number"
+                min="0"
+                max="5"
+                step="0.1"
+                value={formData.parcial3}
+                onChange={(e) => handleInputChange('parcial3', parseFloat(e.target.value))}
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                required
+              />
+            </div>
           </div>
 
           <div className="p-3 bg-blue-50 rounded-lg">
             <p className="text-sm text-blue-800">
-              <strong>Promedio calculado:</strong> {
-                formData.parcial1 && formData.parcial2 
-                  ? ((formData.parcial1 + formData.parcial2) / 2).toFixed(2)
+                <strong>Promedio calculado:</strong> {
+                formData.parcial1 || formData.parcial2 || formData.parcial3
+                  ? (
+                    formData.parcial1 * 0.3 +
+                    formData.parcial2 * 0.3 +
+                    formData.parcial3 * 0.4
+                  ).toFixed(2)
                   : '0.00'
-              }
+                }
             </p>
           </div>
 

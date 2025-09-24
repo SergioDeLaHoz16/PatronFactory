@@ -89,11 +89,18 @@ export class FileStudentCRUD implements IStudentCRUD {
     const index = this.students.findIndex(s => s.id === id);
     if (index === -1) return null;
 
-    if (studentData.parcial1 !== undefined || studentData.parcial2 !== undefined) {
+    // Validar si se actualiza alguno de los parciales
+    if (
+      studentData.parcial1 !== undefined ||
+      studentData.parcial2 !== undefined ||
+      studentData.parcial3 !== undefined
+    ) {
       const validation = StudentValidator.validateStudent({
         nombre: studentData.nombre || this.students[index].nombre,
         parcial1: studentData.parcial1 ?? this.students[index].parcial1,
-        parcial2: studentData.parcial2 ?? this.students[index].parcial2
+        parcial2: studentData.parcial2 ?? this.students[index].parcial2,
+  
+        parcial3: studentData.parcial3 ?? this.students[index].parcial3
       });
 
       if (!validation.isValid) {
@@ -101,12 +108,17 @@ export class FileStudentCRUD implements IStudentCRUD {
       }
     }
 
-    // Calcular nuevo promedio si se actualizan los parciales
+    // Calcular nuevo promedio con los porcentajes: parcial1 30%, parcial2 30%, parcial3 40%
     let newPromedio = this.students[index].promedio;
-    if (studentData.parcial1 !== undefined || studentData.parcial2 !== undefined) {
+    if (
+      studentData.parcial1 !== undefined ||
+      studentData.parcial2 !== undefined ||
+      studentData.parcial3 !== undefined
+    ) {
       const parcial1 = studentData.parcial1 ?? this.students[index].parcial1;
       const parcial2 = studentData.parcial2 ?? this.students[index].parcial2;
-      newPromedio = (parcial1 + parcial2) / 2;
+      const parcial3 = studentData.parcial3 ?? this.students[index].parcial3;
+      newPromedio = (parcial1 * 0.3) + (parcial2 * 0.3) + (parcial3 * 0.4);
     }
 
     this.students[index] = {

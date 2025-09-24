@@ -8,6 +8,7 @@ export interface Student {
   nombre: string;
   parcial1: number;
   parcial2: number;
+  parcial3: number;
   promedio?: number;
   createdAt?: Date;
   updatedAt?: Date;
@@ -22,6 +23,7 @@ export class StudentEntity implements Student {
   nombre: string;
   parcial1: number;
   parcial2: number;
+  parcial3: number;
   promedio: number;
   createdAt: Date;
   updatedAt: Date;
@@ -31,18 +33,20 @@ export class StudentEntity implements Student {
     this.nombre = data.nombre;
     this.parcial1 = data.parcial1;
     this.parcial2 = data.parcial2;
+    this.parcial3 = data.parcial2;
     this.promedio = this.calculateAverage();
     this.createdAt = new Date();
     this.updatedAt = new Date();
   }
 
   private calculateAverage(): number {
-    return (this.parcial1 + this.parcial2) / 2;
+    return (this.parcial1 + this.parcial2 + this.parcial3) / 3;
   }
 
-  updateGrades(parcial1: number, parcial2: number): void {
+  updateGrades(parcial1: number, parcial2: number, parcial3: number): void {
     this.parcial1 = parcial1;
     this.parcial2 = parcial2;
+    this.parcial3 = parcial3;
     this.promedio = this.calculateAverage();
     this.updatedAt = new Date();
   }

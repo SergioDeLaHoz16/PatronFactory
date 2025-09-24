@@ -18,7 +18,7 @@ export class StudentValidator {
     return name.trim().length >= 2;
   }
 
-  static validateStudent(student: { nombre: string; parcial1: number; parcial2: number }): ValidationResult {
+  static validateStudent(student: { nombre: string; parcial1: number; parcial2: number; parcial3: number }): ValidationResult {
     const errors: string[] = [];
 
     if (!this.validateName(student.nombre)) {
@@ -31,6 +31,9 @@ export class StudentValidator {
 
     if (!this.validateGrade(student.parcial2)) {
       errors.push('El parcial 2 debe estar entre 0.0 y 5.0');
+    }
+    if (!this.validateGrade(student.parcial3)) {
+      errors.push('El parcial 3 debe estar entre 0.0 y 5.0');
     }
 
     return {

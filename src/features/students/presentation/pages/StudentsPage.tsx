@@ -247,22 +247,34 @@ export const StudentsPage: React.FC = () => {
         )}
 
         {/* Footer informativo */}
-        <div className="mt-12 p-6 bg-blue-50 rounded-lg border-l-4 border-blue-600">
-          <h3 className="font-bold text-blue-900 mb-2">🏭 Patrón Factory en Acción</h3>
-          <p className="text-blue-800 text-sm mb-2">
-            Este sistema demuestra el <strong>Patrón Factory</strong> permitiendo cambiar entre diferentes fuentes de datos:
+        <div className="mt-12 p-6 bg-blue-50 rounded-lg border-l-4 border-[#117a41]">
+          <h3 className="font-bold text-[#42a640] mb-2">🏭 Patrón Factory en Acción</h3>
+          <p className="text-gray-700 text-sm mb-2">
+            Este sistema demuestra el <strong className='text-[#42a640]'>Patrón Factory</strong> permitiendo cambiar entre diferentes fuentes de datos:
           </p>
-          <ul className="text-blue-700 text-sm list-disc list-inside space-y-1">
-            <li><strong>Archivo JSON:</strong> Los datos se manejan en memoria simulando un archivo</li>
-            <li><strong>Base de Datos:</strong> Los datos se almacenan en Supabase</li>
-            <li><strong>Intercambiable:</strong> Cambiar fuente no requiere modificar el código de negocio</li>
-            <li><strong>Extensible:</strong> Fácil agregar nuevas fuentes (API, LocalStorage, etc.)</li>
-          </ul>
+            <ul className="text-sm list-disc list-inside space-y-1">
+            <li className='text-[#094a08]'>
+              <strong className="text-[#42a640]">Archivo JSON:</strong>
+              <span className="text-gray-700"> Los datos se manejan en memoria simulando un archivo</span>
+            </li>
+            <li>
+              <strong className="text-[#42a640]">Base de Datos:</strong>
+              <span className="text-gray-700"> Los datos se almacenan en Supabase</span>
+            </li>
+            <li>
+              <strong className="text-[#42a640]">Intercambiable:</strong>
+              <span className="text-gray-700"> Cambiar fuente no requiere modificar el código de negocio</span>
+            </li>
+            <li>
+              <strong className="text-[#42a640]">Extensible:</strong>
+              <span className="text-gray-700"> Fácil agregar nuevas fuentes (API, LocalStorage, etc.)</span>
+            </li>
+            </ul>
 
           {/* Información de configuración de Supabase */}
-          <div className="mt-4 p-3 bg-blue-100 rounded border">
-            <h4 className="font-semibold text-blue-900 mb-2">🔐 Configuración de Supabase:</h4>
-            <div className="text-xs text-blue-800 space-y-1">
+          <div className="mt-4 p-3 bg-[#42a6402a] rounded border">
+            <h4 className="font-semibold text-[#42a640] mb-2">🔐 Configuración de Supabase:</h4>
+            <div className="text-xs text-[#42a640] space-y-1">
               <p><strong>Estado:</strong> {
                 import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY
                   ? '✅ Variables configuradas'

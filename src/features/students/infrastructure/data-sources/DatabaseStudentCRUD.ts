@@ -6,11 +6,6 @@ import { StudentValidator } from '../../../../shared/utils/validations/validatio
 /**
  * DatabaseStudentCRUD - Implementación concreta para manejo de datos desde Supabase
  * 
- * 🔐 BUENAS PRÁCTICAS DE SEGURIDAD:
- * - Usa variables de entorno para credenciales sensibles
- * - Las variables de Vite deben empezar con VITE_ para ser accesibles en el frontend
- * - Nunca hardcodear credenciales en el código fuente
- * 
  * Principios SOLID aplicados:
  * - Single Responsibility Principle (SRP): Solo maneja datos desde base de datos
  * - Open/Closed Principle (OCP): Implementa la interfaz sin modificar código existente
@@ -51,7 +46,10 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
       throw new Error(`Datos inválidos: ${validation.errors.join(', ')}`);
     }
 
-    const promedio = (studentData.parcial1 + studentData.parcial2) / 2;
+    // Calcular promedio ponderado: parcial1 (30%), parcial2 (30%), parcial3 (40%)
+    const promedio = (studentData.parcial1 * 0.3) +
+                     (studentData.parcial2 * 0.3) +
+                     (studentData.parcial3 * 0.4);
     
     const { data, error } = await this.supabase
       .from('estudiante')
@@ -60,6 +58,7 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
           nombre: studentData.nombre,
           parcial1: studentData.parcial1,
           parcial2: studentData.parcial2,
+          parcial3: studentData.parcial3,
           promedio: promedio
         }
       ])
@@ -107,7 +106,7 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
   }
 
   async update(id: string, studentData: Partial<Student>): Promise<Student | null> {
-    if (studentData.parcial1 !== undefined || studentData.parcial2 !== undefined) {
+    if (studentData.parcial1 !== undefined || studentData.parcial2 !== undefined || studentData.parcial3 !== undefined) {
       // Primero obtenemos el estudiante actual para validar
       const current = await this.read(id);
       if (!current) return null;
@@ -115,18 +114,19 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
       const validation = StudentValidator.validateStudent({
         nombre: studentData.nombre || current.nombre,
         parcial1: studentData.parcial1 ?? current.parcial1,
-        parcial2: studentData.parcial2 ?? current.parcial2
-      });
+        parcial2: studentData.parcial2 ?? current.parcial2,
+        parcial3: studentData.parcial3 ?? current.parcial3
+      } as Omit<Student, 'id'>);
       
       if (!validation.isValid) {
         throw new Error(`Datos inválidos: ${validation.errors.join(', ')}`);
       }
 
       // Recalcular promedio si se actualizan los parciales
-      if (studentData.parcial1 !== undefined || studentData.parcial2 !== undefined) {
-        studentData.promedio = ((studentData.parcial1 ?? current.parcial1) + 
-                               (studentData.parcial2 ?? current.parcial2)) / 2;
-      }
+      studentData.promedio =
+        ((studentData.parcial1 ?? current.parcial1) * 0.3) +
+        ((studentData.parcial2 ?? current.parcial2) * 0.3) +
+        ((studentData.parcial3 ?? current.parcial3) * 0.4);
     }
 
     const { data, error } = await this.supabase
@@ -159,57 +159,4 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
     console.log('🗄️ Estudiante eliminado de BD, ID:', id);
     return true;
   }
-
-//   async importStudentsFromJSON(jsonInput: string | File): Promise<void> {
-//   // 1) Leer contenido
-//   const content = typeof jsonInput === "string" ? jsonInput : await jsonInput.text();
-
-//   // 2) Parsear
-//   let parsed: any;
-//   try {
-//     parsed = JSON.parse(content);
-//   } catch (err) {
-//     throw new Error("JSON inválido: " + (err instanceof Error ? err.message : String(err)));
-//   }
-
-//   // 3) Validar
-//   const validation = StudentJSONValidator.validate(parsed);
-//   if (!validation.isValid) {
-//     throw new Error("Errores de validación: " + validation.errors.join(" | "));
-//   }
-
-//   // 4) Convertir usando Factory / Entidades
-//   const students = parsed.map(
-//     (raw: any) =>
-//       new StudentEntity({
-//         // 🚨 Omitimos el id para que Supabase genere UUID
-//         id: undefined,
-//         nombre: String(raw.nombre),
-//         parcial1: Number(raw.parcial1),
-//         parcial2: Number(raw.parcial2),
-//       })
-//   );
-
-//   // 5) Guardar en Supabase con UPSERT (basado en nombre para evitar duplicados)
-//   const { error } = await this.supabase
-//     .from("estudiante")
-//     .upsert(
-//       students.map((s: StudentEntity) => ({
-//         // ❌ No incluimos id
-//         nombre: s.nombre,
-//         parcial1: s.parcial1,
-//         parcial2: s.parcial2,
-//         promedio: (s.parcial1 + s.parcial2) / 2,
-//       })),
-//       { onConflict: "nombre" } // 👈 Usa "nombre" como clave única
-//     );
-
-//   if (error) {
-//     throw new Error(`Error guardando estudiantes en Supabase: ${error.message}`);
-//   }
-
-//   console.log(`🗄️ ${students.length} estudiantes insertados/actualizados desde JSON.`);
-// }
-
-
 }
