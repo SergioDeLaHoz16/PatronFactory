@@ -1,6 +1,8 @@
 import { IStudentCRUD } from '../../domain/interfaces/IStudentCRUD';
 import { FileStudentCRUD } from '../data-sources/FileStudentCRUD';
 import { DatabaseStudentCRUD } from '../data-sources/DatabaseStudentCRUD';
+import { createSupabaseClient } from '../database/supabaseClient';
+import { StudentValidator } from '../../../../shared/utils/validations/validation';
 
 /**
  * PATRÓN FACTORY IMPLEMENTADO AQUÍ 🏭
@@ -40,7 +42,7 @@ export class StudentFactory {
       case 'file':
         return new FileStudentCRUD();
       case 'database':
-        return new DatabaseStudentCRUD();
+        return new DatabaseStudentCRUD(createSupabaseClient(), StudentValidator);
       default:
         throw new Error(`Tipo de fuente de datos no soportado: ${sourceType}`);
     }

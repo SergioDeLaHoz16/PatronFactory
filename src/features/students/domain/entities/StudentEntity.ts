@@ -16,7 +16,7 @@ export class StudentEntity implements Student {
   updatedAt: Date;
 
   constructor(data: Omit<Student, 'promedio' | 'createdAt' | 'updatedAt'>) {
-    this.id = data.id;
+    this.id = data.id;  
     this.nombre = data.nombre;
     this.parcial1 = data.parcial1;
     this.parcial2 = data.parcial2;

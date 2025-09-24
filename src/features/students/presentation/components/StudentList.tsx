@@ -83,7 +83,7 @@ export const StudentList: React.FC<StudentListProps> = ({
                 </div>
                 <div className="text-center">
                   <p className="text-sm font-semibold text-gray-500 mb-1">Parcial 3</p>
-                  <p  className={`text-xl font-bold ${getGradeNumber(student.parcial3)}`}>{student.parcial2.toFixed(1)}</p>
+                  <p  className={`text-xl font-bold ${getGradeNumber(student.parcial3)}`}>{student.parcial3.toFixed(1)}</p>
                 </div>
                 <div className="text-center">
                   <p className="text-sm font-semibold text-gray-500 mb-1">Promedio</p>
