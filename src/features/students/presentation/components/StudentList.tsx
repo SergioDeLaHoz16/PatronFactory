@@ -57,9 +57,9 @@ export const StudentList: React.FC<StudentListProps> = ({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-4 ">
       {students.map((student) => (
-        <div key={student.id} className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow">
+        <div key={student.id} className="bg-white border border-gray-200 rounded-lg p-8 shadow-sm hover:shadow-md transition-shadow duration-700">
           <div className="flex items-center justify-between">
             <div className="flex-1">
               <div className="flex items-center gap-4">
@@ -104,14 +104,14 @@ export const StudentList: React.FC<StudentListProps> = ({
             <div className="flex flex-col gap-2 ml-4">
               <button
                 onClick={() => onEdit(student)}
-                className="p-2 text-[#8cce6c] hover:bg-blue-100 rounded-lg transition-colors"
+                className="p-2 text-[#57883e] hover:bg-[#42a54250] rounded-lg transition-colors duration-700"
                 title="Editar estudiante"
               >
                 <Edit size={18} />
               </button>
               <button
                 onClick={() => onDelete(student.id)}
-                className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors"
+                className="p-2 text-red-600 hover:bg-red-100 rounded-lg transition-colors duration-700"
                 title="Eliminar estudiante"
               >
                 <Trash2 size={18} />

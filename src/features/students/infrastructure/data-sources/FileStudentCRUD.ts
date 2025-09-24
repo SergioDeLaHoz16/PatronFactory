@@ -1,8 +1,9 @@
+
 import { IStudentCRUD } from '../../domain/interfaces/IStudentCRUD';
 import { Student, StudentEntity } from '../../domain/entities/Student';
 import { StudentValidator } from '../../../../shared/utils/validations/validation';
 import studentsData from '../../../../data/students.json';
-
+// import { writeFile } from 'fs/promises';
 /**
  * FileStudentCRUD - Implementación concreta para manejo de datos desde archivo JSON
  * Principios SOLID aplicados:
@@ -23,7 +24,15 @@ export class FileStudentCRUD implements IStudentCRUD {
     }));
     console.log('📁 FileStudentCRUD initialized - Datos cargados desde archivo JSON');
   }
-
+  // Si necesitas este método como parte de la clase, conviértelo en método privado:
+  // private async escribirArchivo(nombreArchivo: string, contenido: string): Promise<void> {
+  //   try {
+  //     await writeFile(nombreArchivo, contenido, 'utf8');
+  //     console.log(`Archivo ${nombreArchivo} creado exitosamente`);
+  //   } catch (error) {
+  //     console.error(`Error al escribir el archivo: ${error}`);
+  //   }
+  // }
   /**
    * Simula la escritura al archivo JSON
    * En un entorno real, esto escribiría al sistema de archivos
@@ -37,7 +46,7 @@ export class FileStudentCRUD implements IStudentCRUD {
       console.log('📁 Datos actualizados (simulando escritura a archivo):', jsonData);
 
       // En un entorno Node.js real, usarías:
-      // await fs.writeFile('src/data/students.json', jsonData, 'utf8');
+      // this.escribirArchivo('students.json', jsonData);
 
       // Para demostración, creamos un blob descargable
       const blob = new Blob([jsonData], { type: 'application/json' });
@@ -54,6 +63,8 @@ export class FileStudentCRUD implements IStudentCRUD {
       console.error('📁 Error simulando escritura de archivo:', error);
     }
   }
+
+  
 
   async create(studentData: Omit<Student, 'id'>): Promise<Student> {
     const validation = StudentValidator.validateStudent(studentData);

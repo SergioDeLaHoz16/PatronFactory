@@ -46,7 +46,7 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div className="bg-white p-6 rounded-lg shadow-xl max-w-md w-full mx-4">
-        <h2 className="text-2xl font-bold mb-4 text-gray-800">
+        <h2 className="text-2xl font-bold mb-4 text-[#117a41]">
           {student ? 'Editar Estudiante' : 'Nuevo Estudiante'}
         </h2>
 
@@ -69,7 +69,7 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
               type="text"
               value={formData.nombre}
               onChange={(e) => handleInputChange('nombre', e.target.value)}
-              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#117a41] focus:border-transparent"
               placeholder="Ingrese el nombre del estudiante"
               required
             />
@@ -87,7 +87,7 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
                 step="0.1"
                 value={formData.parcial1}
                 onChange={(e) => handleInputChange('parcial1', parseFloat(e.target.value))}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#117a41] focus:border-transparent"
                 required
               />
             </div>
@@ -103,7 +103,7 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
                 step="0.1"
                 value={formData.parcial2}
                 onChange={(e) => handleInputChange('parcial2', parseFloat(e.target.value))}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#117a41] focus:border-transparent"
                 required
               />
             </div>
@@ -118,14 +118,14 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
                 step="0.1"
                 value={formData.parcial3}
                 onChange={(e) => handleInputChange('parcial3', parseFloat(e.target.value))}
-                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#117a41] focus:border-transparent"
                 required
               />
             </div>
           </div>
 
-          <div className="p-3 bg-blue-50 rounded-lg">
-            <p className="text-sm text-blue-800">
+          <div className="p-3 bg-[#42a6402a] rounded-lg">
+            <p className="text-sm text-[#117a41]">
                 <strong>Promedio calculado:</strong> {
                 formData.parcial1 || formData.parcial2 || formData.parcial3
                   ? (
@@ -141,7 +141,7 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
           <div className="flex gap-3 pt-4">
             <button
               type="submit"
-              className="flex-1 bg-blue-600 text-white py-3 px-4 rounded-lg hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 bg-[#43a542] text-white font-semibold py-3 px-4 rounded-lg hover:bg-[#117a41] transition-colors flex items-center justify-center gap-2 duration-700"
             >
               <Save size={18} />
               Guardar
@@ -149,7 +149,7 @@ export const StudentForm: React.FC<StudentFormProps> = ({ student, onSubmit, onC
             <button
               type="button"
               onClick={onCancel}
-              className="flex-1 bg-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-gray-400 transition-colors flex items-center justify-center gap-2"
+              className="flex-1 bg-gray-300 text-gray-700 py-3 px-4 rounded-lg hover:bg-[#43a542] hover:text-white font-semibold transition-colors flex items-center justify-center gap-2 duration-700"
             >
               <X size={18} />
               Cancelar

@@ -146,7 +146,7 @@ export const StudentsPage: React.FC = () => {
             <div className="flex gap-2">
               <button
                 onClick={() => changeDataSource('file')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${dataSource === 'file'
+                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-700 ${dataSource === 'file'
                   ? 'bg-[#117a41] text-white font-semibold shadow-md'
                   : 'bg-gray-100 font-semibold text-gray-700 hover:bg-[#f0ffee] hover:text-gray-600'
                   }`}
@@ -158,7 +158,7 @@ export const StudentsPage: React.FC = () => {
 
               <button
                 onClick={() => changeDataSource('database')}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all ${dataSource === 'database'
+                className={`flex items-center gap-2 px-4 py-2 rounded-md transition-all duration-700 ${dataSource === 'database'
                   ? 'bg-[#117a41] text-white font-semibold shadow-md'
                   : 'bg-gray-100 font-semibold text-gray-700 hover:bg-[#f0ffee] hover:text-gray-600'
                   }`}

@@ -37,7 +37,6 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
       supabaseKey
     );
     
-    console.log('🗄️ DatabaseStudentCRUD initialized - Conectado a Supabase:', supabaseUrl);
   }
 
   async create(studentData: Omit<Student, 'id'>): Promise<Student> {
@@ -45,8 +44,6 @@ export class DatabaseStudentCRUD implements IStudentCRUD {
     if (!validation.isValid) {
       throw new Error(`Datos inválidos: ${validation.errors.join(', ')}`);
     }
-
-    // Calcular promedio ponderado: parcial1 (30%), parcial2 (30%), parcial3 (40%)
     const promedio = (studentData.parcial1 * 0.3) +
                      (studentData.parcial2 * 0.3) +
                      (studentData.parcial3 * 0.4);
